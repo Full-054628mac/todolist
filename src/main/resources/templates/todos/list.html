@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+    <title>ToDoリスト一覧 | ToDoリスト</title>
+</head>
+<body>
+<h1 class="mt-3">ToDoリスト一覧</h1>
+<a href="../index.html" th:href="@{/}">トップページ</a>
+<a href="./creationForm.html" th:href="@{/todos/creationForm}">登録</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>概要</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${todoList}">
+        <th th:text="${todo.id}">(id)</th>
+        <td>
+            <a href="./detail.html" th:href="@{/todos/{todoId}(todoId=${todo.id})}" th:text="${todo.summary}">(summary)
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
