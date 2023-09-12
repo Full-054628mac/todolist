@@ -1,8 +1,6 @@
 package com.example.todo.domain.todo;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,4 +14,10 @@ public interface ToDoRepository {
 
     @Select("select * from todos where id = #{todoId}")
     ToDoEntity findById(long todoId);
+
+    @Delete("delete from todos where id = #{todoId}")
+    void deleteById(long todoId);
+
+    @Update("update todos set isCompleted = true where id = #{todoId}")
+    void completeById(long todoId);
 }

@@ -3,6 +3,7 @@ package com.example.todo.domain.todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 
@@ -22,6 +23,14 @@ public class ToDoService {
 
     public ToDoEntity findById(long todoId) {
         return todoRepository.findById(todoId);
+    }
+
+    public void deleteById(long todoId){
+        todoRepository.deleteById(todoId);
+    }
+
+    public void completeById(long todoId){
+        todoRepository.completeById(todoId);
     }
 }
 

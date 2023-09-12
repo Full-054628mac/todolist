@@ -12,7 +12,7 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>概要</th>
+        <th>タイトル</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +21,15 @@
         <td>
             <a href="./detail.html" th:href="@{/todos/{todoId}(todoId=${todo.id})}" th:text="${todo.summary}">(summary)
             </a>
+            <form th:action="@{/todos/complete(index=${todo.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-success">完了</button>
+            </form>
+            <form th:action="@{/todos/test(index=${todo.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-primary">編集</button>
+            </form>
+            <form th:action="@{/todos/delete(index=${todo.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger">削除</button>
+            </form>
         </td>
     </tr>
     </tbody>

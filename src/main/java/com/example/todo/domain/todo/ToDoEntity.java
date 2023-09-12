@@ -9,4 +9,6 @@ public class ToDoEntity {
     private long id;
     private String summary;
     private String description;
+    private boolean isCompleted;
 }
+
