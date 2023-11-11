@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
 <head>
     <title>トップページ | ToDoリスト</title>
@@ -9,6 +10,12 @@
 <ul>
     <li>
         <a href="./todos/list.html" th:href="@{/todos}">ToDo一覧</a>
+    </li>
+
+    <li sec:authorize="hasAuthority('ADMIN')"><a href="./users/list.html" th:href="@{/users}">ユーザー一覧</a></li>
+
+    <li>
+        <a href="./logout.html" th:href="@{/logout}">ログアウト</a>
     </li>
 </ul>
 </body>

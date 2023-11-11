@@ -8,6 +8,7 @@
 <h1 class="mt-3">ToDoリスト一覧</h1>
 <a href="../index.html" th:href="@{/}">トップページ</a>
 <a href="./creationForm.html" th:href="@{/todos/creationForm}">登録</a>
+<h2>未完了</h2>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -16,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="todo : ${todoList}">
+    <tr th:each="todo : ${noCompletedList}">
         <th th:text="${todo.id}">(id)</th>
         <td>
             <a href="./detail.html" th:href="@{/todos/{todoId}(todoId=${todo.id})}" th:text="${todo.summary}">(summary)
@@ -24,8 +25,32 @@
             <form th:action="@{/todos/complete(index=${todo.id})}" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-success">完了</button>
             </form>
-            <form th:action="@{/todos/test(index=${todo.id})}" method="post" style="display:inline;">
+            <form th:action="@{/todos/editForm/{todoId}(todoId=${todo.id})}" method="get" style="display:inline;">
                 <button type="submit" class="btn btn-primary">編集</button>
+            </form>
+            <form th:action="@{/todos/delete(index=${todo.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger">削除</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h2>完了</h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>タイトル</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${completedList}">
+        <th th:text="${todo.id}">(id)</th>
+        <td>
+            <a href="./detail.html" th:href="@{/todos/{todoId}(todoId=${todo.id})}" th:text="${todo.summary}">(summary)
+            </a>
+            <form th:action="@{/todos/restoration(index=${todo.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-primary">復元</button>
             </form>
             <form th:action="@{/todos/delete(index=${todo.id})}" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-danger">削除</button>

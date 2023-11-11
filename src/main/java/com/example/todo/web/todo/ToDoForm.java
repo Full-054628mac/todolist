@@ -12,4 +12,13 @@ public class ToDoForm {
     @NotBlank
     @Size(max=256)
     private String description;
+
+    private boolean isCompleted;
+
+    public ToDoForm(String summary, String description) {
+        this.summary = summary;
+        this.description = description;
+        this.isCompleted = false;
+    }
+
 }

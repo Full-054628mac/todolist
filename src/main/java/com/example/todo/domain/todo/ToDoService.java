@@ -32,5 +32,13 @@ public class ToDoService {
     public void completeById(long todoId){
         todoRepository.completeById(todoId);
     }
-}
 
+    public void restorationById(long todoId){
+        todoRepository.restorationById(todoId);
+    }
+
+    public void editById(long todoId, String summary, String description) {
+        todoRepository.editById(todoId, summary, description);
+    }
+
+}
